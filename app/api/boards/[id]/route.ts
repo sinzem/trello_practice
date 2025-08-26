@@ -8,7 +8,7 @@ interface IBoardRouteContext {
     }
 }
 
-export async function PUT(req: Request, { params }: IBoardRouteContext) {
+export async function PATCH(req: Request, { params }: IBoardRouteContext) {
     const { id } = await params;
     const bodyRaw = await req.json();
     const validateBody = updateBoardDto.safeParse(bodyRaw);

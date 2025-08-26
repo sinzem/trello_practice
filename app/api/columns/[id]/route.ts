@@ -8,7 +8,7 @@ interface IColumnRouteContext {
     }
 }
 
-export async function PUT(req: Request, { params }: IColumnRouteContext) {
+export async function PATCH(req: Request, { params }: IColumnRouteContext) {
     const { id } = await params;
     const bodyRaw = await req.json();
     const validateBody = updateColumnDto.safeParse(bodyRaw);

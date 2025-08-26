@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { useState } from "react";
 import clsx from "clsx";
+import { useClickAway } from "@uidotdev/usehooks";
+import { twMerge } from "flowbite-react/helpers/tailwind-merge";
 
 export const UserDropdown = () => {
 
@@ -15,6 +17,13 @@ export const UserDropdown = () => {
     const toggleDropdown = () => {
         setIsDropDownOpened(!isDropdownOpened);
     }
+
+    const dropdownRef = useClickAway<HTMLDivElement>((e) => { 
+        const element = e.target as HTMLElement;
+
+        if (element.closest("#user-menu-button")) return;
+        setIsDropDownOpened(false);
+    })
 
     return (
             <div className="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse relative">
@@ -31,12 +40,19 @@ export const UserDropdown = () => {
                         alt="User photo" 
                         width={32} 
                         height={32} 
-                        className="w-8 h-8 rounded-full" 
+                        className="w-8 h-8 rounded-full"
+                        id="user-avatar" 
                     />
                     {/* <img className="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-3.jpg" alt="user photo" /> */}
                 </button>
                 
-                <div className={`z-50 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-sm dark:bg-gray-700 dark:divide-gray-600 ${dropdownClasses}`} id="user-dropdown">
+                <div className={twMerge(
+                    `z-50 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-sm dark:bg-gray-700 dark:divide-gray-600`,
+                    dropdownClasses
+                )} 
+                    id="user-dropdown"
+                    ref={dropdownRef}
+                >
                     <div className="px-4 py-3">
                     <span className="block text-sm text-gray-900 dark:text-white">Bonnie Green</span>
                     <span className="block text-sm  text-gray-500 truncate dark:text-gray-400">name@flowbite.com</span>
