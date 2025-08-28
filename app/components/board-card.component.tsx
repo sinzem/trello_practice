@@ -1,12 +1,11 @@
 import Link from 'next/link';
-import React from 'react';
 
 interface IBoardCardProps {
     id: string;
     title: string;
 }
 
-const BoardCard = ({id, title}: IBoardCardProps) => {
+export const BoardCard = ({id, title}: IBoardCardProps) => {
     return (
         <Link 
             href={`/board/${id}`} 
@@ -19,4 +18,3 @@ const BoardCard = ({id, title}: IBoardCardProps) => {
     );
 };
 
-export default BoardCard;
