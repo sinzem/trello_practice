@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { ICreateBoardDto } from "../api/boards/dto";
+import { ICreateBoardDto } from "../app/api/boards/dto";
 import { api } from "../core/api";
 import { Boards } from "../generated/prisma";
 import { useBoardsQueryKey } from "./use-boards";

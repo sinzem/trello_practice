@@ -34,6 +34,9 @@ CREATE TABLE "public"."Cards" (
     CONSTRAINT "Cards_pkey" PRIMARY KEY ("id")
 );
 
+-- CreateIndex
+CREATE UNIQUE INDEX "Boards_title_key" ON "public"."Boards"("title");
+
 -- AddForeignKey
 ALTER TABLE "public"."Columns" ADD CONSTRAINT "Columns_boardId_fkey" FOREIGN KEY ("boardId") REFERENCES "public"."Boards"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 

@@ -31,10 +31,7 @@ yarn-error.log*
 .pnpm-debug.log*
 
 # env files (can opt-in for committing if needed)
-/screen
-draft.ts
-description.ts
-.env*
+.env
 
 # vercel
 .vercel
@@ -42,5 +39,7 @@ description.ts
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-
-/app/generated/prisma
+/screen
+/src/generated/prisma
+/.flowbite-react
+/.vscode

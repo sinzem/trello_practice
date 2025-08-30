@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.1",
-    "@prisma/client": "^6.14.0",
+    "@prisma/client": "^6.15.0",
     "@tanstack/react-query": "^5.85.5",
     "@uidotdev/usehooks": "^2.4.1",
     "axios": "^1.11.0",
@@ -18,12 +18,11 @@
     "flowbite": "^3.1.2",
     "flowbite-react": "^0.12.7",
     "next": "15.5.0",
-    "prisma": "^6.14.0",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-hook-form": "^7.62.0",
     "tailwind-merge": "^3.3.1",
-    "zod": "^4.1.1"
+    "zod": "^4.1.5"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -33,6 +32,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.5.0",
+    "prisma": "^6.15.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

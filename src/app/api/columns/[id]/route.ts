@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { updateColumnDto } from "../dto";
-import { prisma } from "@/app/core/prisma";
+import { prisma } from "../../../../core/prisma";
 
 interface IColumnRouteContext {
     params: {

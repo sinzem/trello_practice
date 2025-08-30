@@ -1,5 +1,8 @@
 @import 'flowbite/dist/flowbite.min.css';
+@plugin "flowbite-react/plugin/tailwindcss";
+@source "../../.flowbite-react/class-list.json";
 @import "tailwindcss";
+
 /* @tailwind base;
 @tailwind components;
 @tailwind utilities; */
