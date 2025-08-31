@@ -15,8 +15,8 @@ export default function RootLayout({
 }>) {
 
   return (
-    <html lang="en">
-      <body className="dark bg-gray-900">
+    <html lang="en" className="h-full">
+      <body className="dark bg-gray-900 h-full">
         <ReactQueryProvider>
           <Navbar />
           {children}
