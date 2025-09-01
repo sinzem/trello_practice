@@ -8,6 +8,32 @@ interface IBoardRouteContext {
     }
 }
 
+export async function GET(req: Request, { params }: IBoardRouteContext) {
+    const { id } = await params;
+
+    const board = await prisma.boards.findUnique({ 
+        where: { id },
+        include: {
+            columns: {
+                include: {
+                    cards: true,
+                }
+            },
+        }
+    });
+
+    if (!board) {
+        return NextResponse.json([
+            {
+                code: "not_found",
+                messages: "Board not found"
+            },
+        ]);
+    }
+
+    return NextResponse.json(board);
+}
+
 export async function PATCH(req: Request, { params }: IBoardRouteContext) {
     const { id } = await params;
     const bodyRaw = await req.json();

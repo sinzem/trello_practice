@@ -11,7 +11,16 @@ interface IPageProps {
 
 export default async function BoardPage(props: IPageProps) {
     const { id } = await props.params;
-    const board = await prisma.boards.findUnique({where: { id }});
+    const board = await prisma.boards.findUnique({
+        where: { id },
+        include: {
+            columns: {
+                include: {
+                    cards: true,
+                }
+            }
+        }
+    });
  
     if (!board) {
         return notFound();
