@@ -5,7 +5,7 @@ import { Input } from ".";
 import {useForm}  from 'react-hook-form';
 import {zodResolver} from "@hookform/resolvers/zod"
 import { useState } from "react";
-import { useCreateBoard } from "../hooks/use-create-board";
+import { useCreateColumnMutation } from "@/hooks/use-create-column";
 
 const createColumnSchema = z.object({
     title: z.string().min(1).max(20),
@@ -13,7 +13,11 @@ const createColumnSchema = z.object({
 
 type ICreateColumnValues = z.infer<typeof createColumnSchema>; 
 
-export const CreateColumn = () => {
+interface ICreateColumnProps {
+    boardId: string;
+}
+
+export const CreateColumn = ({ boardId }: ICreateColumnProps) => {
     const [isFormOpened, setIsFormOpened] = useState(false);
 
     const { 
@@ -24,10 +28,13 @@ export const CreateColumn = () => {
         resolver: zodResolver(createColumnSchema)
     })
 
-    const { mutateAsync } = useCreateBoard();
+    const { mutateAsync } = useCreateColumnMutation({ boardId });
 
     const onSubmit = handleSubmit(async (values) => {
-        await mutateAsync(values);
+        await mutateAsync({
+            ...values,
+            boardId,
+        });
         setIsFormOpened(false);
     })
 
@@ -36,7 +43,7 @@ export const CreateColumn = () => {
     return (
         <div 
             onClick={openForm}
-            className="block w-full p-6 bg-white border border-gray-200 rounded-lg shadow-sm cursor-pointer hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+            className="block h-fit min-w-[12.5rem] w-[12.5rem] p-4 bg-white border border-gray-200 rounded-lg shadow-sm cursor-pointer hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
         >
             {isFormOpened ? (
                 <form onSubmit={onSubmit}>
@@ -48,7 +55,7 @@ export const CreateColumn = () => {
                     />
                 </form>
             ) : (
-                <h5 className=" text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                <h5 className=" text-lg font-bold tracking-tight text-gray-900 dark:text-white">
                     + Create new column
                 </h5>
             )}

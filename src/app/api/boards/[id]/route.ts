@@ -15,6 +15,9 @@ export async function GET(req: Request, { params }: IBoardRouteContext) {
         where: { id },
         include: {
             columns: {
+                orderBy: {
+                    order: "asc",
+                },
                 include: {
                     cards: true,
                 }

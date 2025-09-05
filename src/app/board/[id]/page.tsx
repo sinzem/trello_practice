@@ -16,6 +16,9 @@ export default async function BoardPage(props: IPageProps) {
         where: { id },
         include: {
             columns: {
+                orderBy: {
+                    order: "asc",
+                },
                 include: {
                     cards: true,
                 }
@@ -28,12 +31,14 @@ export default async function BoardPage(props: IPageProps) {
     }
 
     return (
-        <div className="container mx-auto h-content flex flex-col">
-            <h1 className="text-white text-4xl text-center mb-8">
-                {board.title}
-            </h1>
+        <>
+            <div className="container mx-auto">
+                <h1 className="text-white text-4xl text-center mb-8">
+                    {board.title}
+                </h1>
+            </div>
             <ColumnsList board={board} />
-        </div>
+        </>
     );
 };
 
