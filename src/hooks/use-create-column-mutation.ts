@@ -2,7 +2,6 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { ICreateColumnDto as ICreateColumnDtoOriginal } from "../app/api/columns/dto";
 import { api } from "../core/api";
 import { Columns } from "../generated/prisma";
-import { useBoardsQueryKey } from "./use-boards";
 import { IBoardPayLoad } from "./use-board-query";
 
 type ICreateColumnDto = Omit<ICreateColumnDtoOriginal, "width">

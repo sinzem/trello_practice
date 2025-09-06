@@ -1,7 +1,7 @@
 "use client";
 
 import { Boards } from "../generated/prisma";
-import { useBoards } from "../hooks/use-boards";
+import { useBoards } from "../hooks/use-boards-query";
 import { BoardCard } from "./";
 import { CreateBoard } from "./";
 
